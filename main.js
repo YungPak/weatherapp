@@ -20,6 +20,7 @@ function getResults (query) {
 }
 
 function displayResults (weather) {
+  
   let city = document.querySelector('.location .city');
   city.innerText = `${weather.name}, ${weather.sys.country}`;
 
@@ -56,3 +57,16 @@ function dateBuilder (d) {
 
   return `${day} ${date} ${month} ${year}`;
 }
+
+
+function bgSwitch(){
+  var today = new Date();
+  var time = today.getHours()
+
+  if (time >= 1){
+    alert("Hello")
+    $("app-wrap").css("background-color" , "#7658D9");
+  }
+}
+
+bgSwitch();
