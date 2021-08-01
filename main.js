@@ -34,7 +34,14 @@ function displayResults (weather) {
   let weather_el = document.querySelector('.current .weather');
   weather_el.innerText = weather.weather[0].main;
 
+  const weatherFormation = ["sunny", "clouds", "clear" ];
 
+  for (i = 0; i <= weatherFormation.length; i++){
+    if (weather.weather[0].main = weatherFormation[i]){
+      console.log(weather_el.innerText) 
+    }
+
+  }
 
   if (weather_el.innerText = "clouds"){
 
@@ -63,10 +70,12 @@ function bgSwitch(){
   var today = new Date();
   var time = today.getHours()
 
-  if (time >= 1){
-    alert("Hello")
-    $("app-wrap").css("background-color" , "#7658D9");
+  if (time >= 18){
+    $("body").css("background-color" , "#7658D9");
+  }else{
+    $("body").css("background-color" , "#00B8FF"); 
   }
 }
 
 bgSwitch();
+
