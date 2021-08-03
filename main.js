@@ -34,14 +34,16 @@ function displayResults (weather) {
   let weather_el = document.querySelector('.current .weather');
   weather_el.innerText = weather.weather[0].main;
 
-  const weatherFormation = ["sunny", "clouds", "clear", "rain", "thunderstorm", "snow" ];
-  const weatherIcon = ["Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png" ];
+  const weatherFormation = ["Sunny", "Clouds", "Clear", "rain", "thunderstorm", "snow" ];
+  const weatherIcon = ["Assets/Sun.png", "Assets/CloudResize.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png" ];
 
-  for (i = 0; i <= weatherFormation.length; i++){
-    if (weather.weather[0].main = weatherFormation[i]){
+  for (i = 0; i < weatherFormation.length; i++){
+    if (weather.weather[0].main == weatherFormation[i]){
+      console.log(weatherFormation[i]);
       console.log(weather_el.innerText);
       document.getElementById("weatherImage").src = weatherIcon[i];
     }
+    console.log(i);
   }
 
 
