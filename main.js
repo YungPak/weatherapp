@@ -34,24 +34,32 @@ function displayResults (weather) {
   let weather_el = document.querySelector('.current .weather');
   weather_el.innerText = weather.weather[0].main;
 
-  const weatherFormation = ["sunny", "clouds", "clear" ];
+  const weatherFormation = ["sunny", "clouds", "clear", "rain", "thunderstorm", "snow" ];
+  const weatherIcon = ["Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png" ];
 
   for (i = 0; i <= weatherFormation.length; i++){
     if (weather.weather[0].main = weatherFormation[i]){
-      console.log(weather_el.innerText) 
+      console.log(weather_el.innerText);
+      document.getElementById("weatherImage").src = weatherIcon[i];
     }
-
   }
 
-  if (weather_el.innerText = "clouds"){
 
-    alert("Ayo")
 
-  }
-
+  
   let hilow = document.querySelector('.hi-low');
   hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
 }
+
+function imgChange(){
+  document.getElementById("weatherImage").src = "Assets/Sun.png";
+}
+
+//imgChange();
+
+
+
+
 
 function dateBuilder (d) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
