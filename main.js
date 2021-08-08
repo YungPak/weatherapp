@@ -6,6 +6,9 @@ const api = {
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
 
+var today = new Date();
+var time = today.getHours()
+
 function setQuery(evt) {
   if (evt.keyCode == 13) {
     getResults(searchbox.value);
@@ -34,34 +37,28 @@ function displayResults (weather) {
   let weather_el = document.querySelector('.current .weather');
   weather_el.innerText = weather.weather[0].main;
 
-  const weatherFormation = ["Sunny", "Clouds", "Clear", "rain", "thunderstorm", "snow" ];
-  const weatherIcon = ["Assets/Sun.png", "Assets/CloudResize.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png", "Assets/Sun.png" ];
 
+  const weatherFormation = ["Sunny", "Clouds", "Clear", "Rain", "Thunderstorm", "Snow", "Haze"];
+  const weatherIcon = ["Assets/Sun.png", "Assets/Cloud.png", "Assets/SunCloud.png", "Assets/Rain.png", "Assets/Thunderstorm.png", "Assets/Snow.png", "Assets/Cloud.png" ];
+  const weatherIconNight = ["Assets/Sun.png" , "Assets/Night/Clouds.png", "Assets/Night/Clear.png", "Assets/Night/Rain.png" , "Assets/Night/Thunderstorm.png", "Assets/Night/Snow.png", "Assets/Night/Clouds.png"]; 
+  
   for (i = 0; i < weatherFormation.length; i++){
-    if (weather.weather[0].main == weatherFormation[i]){
-      console.log(weatherFormation[i]);
-      console.log(weather_el.innerText);
+
+    if (time >= 18){
+
+      if (weather.weather[0].main == weatherFormation[i]){
+        document.getElementById("weatherImage").src = weatherIconNight[i];
+      }
+
+    } else if (weather.weather[0].main == weatherFormation[i]){
       document.getElementById("weatherImage").src = weatherIcon[i];
     }
-    console.log(i);
+  
   }
 
-
-
-  
   let hilow = document.querySelector('.hi-low');
   hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
 }
-
-function imgChange(){
-  document.getElementById("weatherImage").src = "Assets/Sun.png";
-}
-
-//imgChange();
-
-
-
-
 
 function dateBuilder (d) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -72,16 +69,17 @@ function dateBuilder (d) {
   let month = months[d.getMonth()];
   let year = d.getFullYear();
 
-  return `${day} ${date} ${month} ${year}`;
+  return `${day}, ${date} ${month}, ${year} `;
 }
 
 
+
+
 function bgSwitch(){
-  var today = new Date();
-  var time = today.getHours()
 
   if (time >= 18){
-    $("body").css("background-color" , "#7658D9");
+    $("body").css("background-color" , "#36454F");
+
   }else{
     $("body").css("background-color" , "#00B8FF"); 
   }
