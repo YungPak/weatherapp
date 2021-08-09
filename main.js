@@ -44,7 +44,7 @@ function displayResults (weather) {
   
   for (i = 0; i < weatherFormation.length; i++){
 
-    if (time >= 18){
+    if (time >= 20){
 
       if (weather.weather[0].main == weatherFormation[i]){
         document.getElementById("weatherImage").src = weatherIconNight[i];
@@ -56,8 +56,10 @@ function displayResults (weather) {
   
   }
 
+  /*
   let hilow = document.querySelector('.hi-low');
   hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
+  */
 }
 
 function dateBuilder (d) {
@@ -77,7 +79,7 @@ function dateBuilder (d) {
 
 function bgSwitch(){
 
-  if (time >= 18){
+  if (time >= 20){
     $("body").css("background-color" , "#36454F");
 
   }else{
